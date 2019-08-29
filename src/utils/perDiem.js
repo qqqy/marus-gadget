@@ -1,36 +1,24 @@
-// export default function perDiem(fruit){
-//   const {grow , regrow , yeild , seedBuy , trellis , prices} = fruit
-//   const dailies = []
-//   //| Determine Harvests
-  // const persistent = !!grow
-  // const harvests = Math.trunc((28 - grow) / regrow + persistent)
-//   //| Determine Gross Yeild
-//   const grossYeild = harvests * yeild
-//   //| Determine tile usage
-//   const tiles = 
-//   //| Determine Overhead
-//   const overhead = 
-//   //| Return Values
-//   return {
-    
-//   }
-// }
+export default function perDiem(item){
+const {daysInSeason,
+tiles,
+buy,
+yeild,
+prices,
+grow,
+regrow} = item;
 
-export default function perDiem(){
-  const daysInSeason = 28,
-  tiles = 1,
-  buyPrice = 100,
-  perCropYeild = 1,
-  sellPrice = 120,
-  grow = 9,
-  regrow = 4;
-
-  const seasonOverhead = buyPrice * tiles
+  const seasonOverhead = buy * tiles
   const persistent = !!grow
-  const harvests = Math.trunc((daysInSeason - grow - 1) / regrow + persistent)
-  const grossYeild = perCropYeild * harvests
-  const seasonGrossProfit = grossYeild * sellPrice
-  const cropPerDiem = (seasonGrossProfit - seasonOverhead)/daysInSeason
-  return cropPerDiem
+  const harvests = Math.trunc((daysInSeason - grow) / regrow + persistent)
+  const grossYeild = yeild * harvests
+  
+  const perDiemAdded = prices.map(price => {
+    const seasonGrossProfit = grossYeild * price.sell
+    const cropPerDiem = (seasonGrossProfit - seasonOverhead)/daysInSeason
+    return {...price, perDiem: cropPerDiem}
+  })
+
+  // return {seasonOverhead, persistent, harvests, grossYeild, seasonGrossProfit, cropPerDiem}
+  return {...item, prices: perDiemAdded}
 }
 
