@@ -7,6 +7,7 @@ export default function functionStacker(item){
   let itemDaysAdjusted = adjustDays(item)
   let itemPerDiemAdded = perDiem(itemDaysAdjusted)
   let itemKegged = kegged(itemPerDiemAdded)
-  console.log("functionStacker: itemKegged:" , itemKegged)
+  let itemJarred = kegged(itemKegged, "jar")
+  console.log("functionStacker: itemKegged:" , itemJarred)
   return weightedAverage(itemPerDiemAdded)
 }

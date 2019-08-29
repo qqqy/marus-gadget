@@ -1,5 +1,8 @@
-export default function adjustDays(item){
+export default function adjustDays(item , instrument){
   let {daysInSeason: days , type} = item
+  if(instrument === "keg"){ 
+    type = `${instrument}-${type}`
+  } else if (instrument && )
   switch(type){
     case "fruit":
     case "wheat":
