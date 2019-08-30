@@ -1,9 +1,18 @@
 import React from 'react'
-import fruits from "../../data/fruits"
 import functionStacker from '../../utils/functionStacker';
 
 export default function DisplayFruit(){
+  const perDiems = functionStacker().map(perDiem => {
+    return (
+      <div>
+        <h1>Product: {perDiem.name}</h1>
+        <h1>Quality: {perDiem.quality}</h1>
+        <h1>PerDiem: {Math.round(perDiem.perDiem * 100)/100}</h1>
+        <hr/>
+      </div>
+    )
+  })
   return(
-    <h1>{Math.round(functionStacker(fruits.testCrop) * 100)/100}</h1>
+    perDiems
   )
 }
