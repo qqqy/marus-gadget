@@ -1,7 +1,7 @@
 import React from 'react'
-import functionStacker from '../../utils/functionStacker';
+import functionStacker from '../../../utils/functionStacker';
 
-export default function DisplayFruit(){
+export default function ListFruit(){
   const perDiems = functionStacker().map(perDiem => {
     return (
       <div>

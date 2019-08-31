@@ -1,12 +1,11 @@
 import React from 'react';
 import './App.css';
-import DisplayFruit from './components/DisplayFruit';
+import routes from './routes';
 
 function App() {
   return (
     <div>
-      <p>Hello World!</p>
-      <DisplayFruit/>
+      {routes}
     </div>
   );
 }
