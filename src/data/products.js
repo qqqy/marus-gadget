@@ -7,6 +7,7 @@ export default [{
   grow: 10 ,
   daysToReharvest: 0 ,
   yeild: 1 ,
+  kegType: "fruit",
   qualities: [
     {
       quality: "base",
