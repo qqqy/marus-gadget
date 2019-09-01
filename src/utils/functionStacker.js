@@ -5,6 +5,8 @@ import calculateHarvests from "./calculateHarvests";
 import processedValues from "./processedValues";
 import caskValues from "./caskValues";
 
+console.log("functionStacker: products:" , products)
+
 //| The function stacker can receive an array containing all items you'd like prices for.
 export default function functionStacker(targetItems = products) {
   const productPerDiems = []

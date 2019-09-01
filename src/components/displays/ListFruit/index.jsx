@@ -2,7 +2,7 @@ import React from 'react'
 import functionStacker from '../../../utils/functionStacker';
 
 export default function ListFruit(){
-  const perDiems = functionStacker().map(perDiem => {
+  const perDiems = functionStacker().sort((a , b) => b.perDiem - a.perDiem).map(perDiem => {
     return (
       <div>
         <h1>Product: {perDiem.name}</h1>
