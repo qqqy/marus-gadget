@@ -12,7 +12,7 @@ export default function functionStacker(targetItems = products) {
   const productPerDiems = []
   //| functionStacker runs perDiem on every item in the array, once for each quality.
   for (let i = 0, length = targetItems.length; i < length; i++) {
-    const { name , qualities , yeild } = targetItems[i]
+    const { name , qualities , yeild , kegType } = targetItems[i]
 
     const days = getDays(targetItems[i])
     const harvests = calculateHarvests(targetItems[i] , days)
@@ -24,7 +24,7 @@ export default function functionStacker(targetItems = products) {
       productPerDiems.push({name , quality: qualities[j].quality , perDiem: (grossSeasonProfit - seasonOverhead)/days})
     }
     //| If keggable, functionStacker adds a keg, jar, and cask perDiem per quality
-    if(targetItems[i].kegType){
+    if(kegType && kegType !== "coffee"){
       const { minutes: kegMinutes , sell: kegSell , product: kegProduct } = processedValues(targetItems[i] , "keg")
       const { minutes: jarMinutes , sell: jarSell , product: jarProduct } = processedValues(targetItems[i] , "jar")
       //> Days for now to keep things consistent, but probably switch to minutes to simplify when accounting for schedule
@@ -38,8 +38,16 @@ export default function functionStacker(targetItems = products) {
       const caskArray = caskValues(kegProduct , {cost: kegSell});
       caskArray.forEach((value , i) => {
         const { days , sell , quality , buy } = value;
-        productPerDiems.push({name: `${kegProduct} (from cask)` , quality, perDiem: (sell - buy)/days})
+        productPerDiems.push({name: `${name} ${kegProduct} (from cask)` , quality, perDiem: (sell - buy)/days})
       })
+    }
+    if(kegType === "coffee"){
+      const { minutes , sell , product } = processedValues(targetItems[i] , "keg")
+      const days = Math.ceil(minutes / 60 / 24);
+      for (let l = 0 , length = qualities.length; l < length; l++){
+        const {sell: buy , quality} = qualities[l];
+        productPerDiems.push({name: `${product} from ${quality} beans` , quality: "base" , perDiem: (sell - (buy * 5))/days})
+      }
     }
   }
   return productPerDiems

@@ -52,6 +52,17 @@ export default [
     11 ,
     60 ,
     {daysToReharvest: 1}
+  ) , 
+  new Vegetable(
+    "coffee" ,
+    [15 , 18 , 22] ,
+    10,
+    15,
+    {
+      daysToReharvest: 2,
+      seasons: 2,
+      yeild: 4
+    }
   )
 ]
 
