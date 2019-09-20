@@ -36,7 +36,8 @@ export default function functionStacker(targetItems = products) {
         productPerDiems.push({name: `${name} ${jarProduct} from ${quality} fruit` , quality: "base" , perDiem: (jarSell - buy)/jarDays })
       }
       const caskArray = caskValues(kegProduct , {cost: kegSell});
-      caskArray.forEach((value , i) => {
+      console.log("Caskarray: " , caskArray)
+      caskArray && caskArray.forEach((value , i) => {
         const { days , sell , quality , buy } = value;
         productPerDiems.push({name: `${name} ${kegProduct} (from cask)` , quality, perDiem: (sell - buy)/days})
       })

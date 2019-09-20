@@ -1,4 +1,5 @@
 export default function caskValues(caskType , options){
+  console.log("caskType , options: " , caskType , options)
   const { cost , cheeseQuality , holistic } = options
   if(caskType === "wine" && !cost) new Error("caskValues: invalid wineCost: " , cost)
 

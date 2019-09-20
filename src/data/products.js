@@ -1,3 +1,6 @@
+// ARGUMENTS: name(string) , quality prices array(array)
+// For Produce: grow(number) , seed buy price (number) , options{daysToReharvest(number) , yeild(number) , seasons(number) , source(not sure)}
+
 class Product{
   constructor(){
     let qualityNames = ["base" , "silver", "gold" , "iridium"]
@@ -39,31 +42,11 @@ class Vegetable extends Produce{
 }
 
 export default [
-  new Fruit("cranberry" , [75 , 93 , 112] , 8 , 240 , {daysToReharvest: 5 , yeild: 2}),
-  new Fruit(
-    "starfruit",
-    [750 , 937 , 1125],
-    13, 
-    400, 
-  ) ,
-  new Vegetable(
-    "hops" ,
-    [25 , 31 , 37] ,
-    11 ,
-    60 ,
-    {daysToReharvest: 1}
-  ) , 
-  new Vegetable(
-    "coffee" ,
-    [15 , 18 , 22] ,
-    10,
-    15,
-    {
-      daysToReharvest: 2,
-      seasons: 2,
-      yeild: 4
-    }
-  )
+  new Fruit("cranberry" , [75 , 93 , 112] , 8 , 240 , {daysToReharvest: 5 , yeild: 2}) ,
+  new Fruit("starfruit",[750 , 937 , 1125], 13 , 400) ,
+  new Vegetable( "hops" , [25 , 31 , 37] , 11 , 60 , {daysToReharvest: 1} ) , 
+  new Vegetable("coffee" , [15 , 18 , 22] , 10,  15, {daysToReharvest: 2, seasons: 2, yeild: 4} ) ,
+  new Vegetable("pumpkin" , [320 , 400 , 480] , 13 , 100) , 
 ]
 
 // export default [{
